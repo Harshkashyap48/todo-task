@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../redux/reducers/authReducers"; // Adjust path if necessary
+import { loginUser } from "../redux/reducers/authReducers"; 
 import "./Login.css";
 
 const DUMMY_CREDENTIALS = {

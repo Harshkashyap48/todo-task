@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../redux/actions/authActions";
+import { logoutUser } from "../redux/actions/authActions"; 
 import "./Sidebar.css";
 
 function Sidebar() {
@@ -15,11 +15,11 @@ function Sidebar() {
     <div className="sidebar">
       <div className="profile-section">
         <img
-          src={require("../user1.jpeg")} // Path to your image
+          src={require("../user1.jpeg")}
           alt="Profile"
           className="profile-img"
         />
-        <p className="profile-name">Hey, {username}</p>
+        <p className="profile-name">Hey, {username || "Guest"}</p>
       </div>
       <div className="menu">
         <ul>
@@ -28,8 +28,17 @@ function Sidebar() {
           <li>Important</li>
           <li>Planned</li>
           <li>Assigned to me</li>
+        </ul>
+      </div>
+      <div className="menu">
+        <ul>
           <li>Add List</li>
         </ul>
+      </div>
+      <div className="logout-section">
+        <button onClick={handleLogout} className="logout-btn">
+          Logout
+        </button>
       </div>
     </div>
   );

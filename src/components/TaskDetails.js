@@ -8,7 +8,7 @@ function TaskDetails() {
   const [repeat, setRepeat] = useState(false);
   const [notes, setNotes] = useState("");
 
-  // Function to add a step
+ 
   const handleAddStep = () => {
     const step = prompt("Enter step:");
     if (step) {
@@ -16,7 +16,7 @@ function TaskDetails() {
     }
   };
 
-  // Function to set a reminder
+ 
   const handleSetReminder = () => {
     const reminderDate = prompt(
       "Enter reminder date and time (e.g., 2024-09-01 09:00):"
@@ -26,20 +26,17 @@ function TaskDetails() {
     }
   };
 
-  // Function to add a due date
-  const handleAddDueDate = () => {
-    const dueDate = prompt("Enter due date (e.g., 2024-09-01):");
-    if (dueDate) {
-      setDueDate(dueDate);
-    }
+
+  const handleAddDueDate = (e) => {
+    setDueDate(e.target.value); 
   };
 
-  // Function to toggle repeat
+
   const handleToggleRepeat = () => {
     setRepeat(!repeat);
   };
 
-  // Function to add notes
+
   const handleAddNotes = () => {
     const note = prompt("Enter notes:");
     if (note) {
@@ -51,15 +48,30 @@ function TaskDetails() {
     <div className="task-details">
       <ul className="details-options">
         <li onClick={handleAddStep}>Add Step</li>
+        <hr />
         <li onClick={handleSetReminder}>Set Reminder</li>
-        <li onClick={handleAddDueDate}>Add Due Date</li>
+        <hr />
+        <li>
+          <label>
+            Add Due Date:
+            <input
+              type="date"
+              value={dueDate || ""}
+              onChange={handleAddDueDate}
+              className="date-input"
+            />
+          </label>
+        </li>
+        <hr />
         <li onClick={handleToggleRepeat}>
           {repeat ? "Repeat: On" : "Repeat: Off"}
         </li>
+        <hr />
         <li onClick={handleAddNotes}>Add Notes</li>
+        <hr />
       </ul>
 
-      {/* Displaying the added details */}
+    
       <div className="task-detail-info">
         {steps.length > 0 && (
           <div>

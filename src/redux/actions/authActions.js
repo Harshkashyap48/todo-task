@@ -1,8 +1,14 @@
+import { logoutUser as sliceLogoutUser } from "../reducers/authReducers";
+
 export const loginUser = (username) => (dispatch) => {
-  // Mock login action
   dispatch({ type: "LOGIN_SUCCESS", payload: username });
 };
 
 export const logoutUser = () => (dispatch) => {
-  dispatch({ type: "LOGOUT" });
+ 
+  localStorage.removeItem("user");
+  localStorage.removeItem("authToken");
+
+
+  dispatch(sliceLogoutUser());
 };
